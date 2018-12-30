@@ -1,0 +1,121 @@
+﻿<Window x:Class="TopixApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TopixApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+
+    <Window.Resources>
+        <Storyboard x:Key="slideOut">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-275,0,0,0" To="0,0,0,0" DecelerationRatio="0.9" Duration="0:0:1"/>
+        </Storyboard>
+
+        <Storyboard x:Key="slideIn">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-275,0,0,0" AccelerationRatio="0.9" Duration="0:0:1"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="937*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="navBar" Panel.ZIndex="1000" Margin="-275,0,-0.4,0.4" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275"/>
+                <!-- Menu width. Equal to navigation margin size -->
+                <ColumnDefinition Width="20"/>
+                <!-- Button width. Equal to frame margin size -->
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Side menu/navigation -->
+            <DockPanel Grid.Column="0" Background="#595959">
+                <Label DockPanel.Dock="Top" Content="Topix" FontSize="36" Height="100" Background="#0b5394" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Button Grid.Row="0" Background="#cccccc" Margin="0,0,0,2.5" Click="ProfileNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image x:Name="ProfileTabImage" DockPanel.Dock="Right" Width="70" Source="/Placeholder Images/profile.png"/>
+                            <Label Content="Profile" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="1" Background="#cccccc" Margin="0,2.5,0,2.5" Click="HubNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Hub.png"/>
+                            <Label Content="Hub" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="2" Background="#cccccc" Margin="0,2.5,0,2.5" Click="TopixNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Topix.png"/>
+                            <Label Content="Topix" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="3" Background="#cccccc" Margin="0,2.5,0,2.5" Click="EventNav_Click" >
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Events.png"/>
+                            <Label Content="Events" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="4" Background="#cccccc" Margin="0,2.5,0,2.5" Click="SearchNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Search.png"/>
+                            <Label Content="Search" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="5" Background="#cccccc" Margin="0,2.5,0,2.5" Click="MessageNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Messages.png"/>
+                            <Label Content="Messages" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="6" Background="#cccccc" Margin="0,2.5,0,2.5" Click="SettingsNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Settings.png"/>
+                            <Label Content="Settings" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+
+                    <Button Grid.Row="7" Background="#cccccc" Margin="0,2.5,0,0" Click="LogoutNav_Click">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Image DockPanel.Dock="Right" Width="50" Margin="0,0,10,0"  Source="/NavIcons/Logout.png"/>
+                            <Label Content="Logout" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </DockPanel>
+                    </Button>
+                </Grid>
+
+            </DockPanel>
+
+            <!-- Open/Close Menu Buttons -->
+            <Button Name="OpenButton" Grid.Column="1" Content="&#57367;" FontFamily="Segoe UI Symbol" FontSize="14" Background="#999999" Click="OpenMenu_Click"/>
+            <Button Name="CloseButton" Grid.Column="1" Content="&#57366;" FontFamily="Segoe UI Symbol" FontSize="14" Background="#999999" Click="CloseMenu_Click" Visibility="Hidden"/>
+        </Grid>
+
+        <Frame x:Name="ContentDisplay" Margin="20,0,-0.4,0.4" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

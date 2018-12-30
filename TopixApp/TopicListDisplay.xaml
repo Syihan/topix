@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="TopixApp.TopicListDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TopixApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+
+    <Grid>
+        <ItemsControl Name="TopicDisplay" ItemsSource="{Binding Mode=OneTime}" Background="White">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Height="40" Margin="0,2.5" Click="TopicButton_Click" Tag="{Binding Path=ID}" Background="DarkGray" BorderThickness="0">
+                        <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Label DockPanel.Dock="Right" Content="&#57367;" FontFamily="Segoe UI Symbol" FontSize="18" Margin="0,0,30,0" VerticalContentAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                                <Image Source="{Binding Path=Image}"/>
+                                <Label Content="{Binding Path=Name}" FontSize="24" Margin="50,0,0,0" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <DockPanel Name="NoneFound" Visibility="Hidden">
+            <Label Content="No Users Found" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </DockPanel>
+    </Grid>
+    
+    
+</UserControl>
